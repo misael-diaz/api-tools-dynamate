@@ -21,4 +21,4 @@ RUN conda install -c conda-forge -c omnia \
     mbuild=0.18.0
 ADD tools /app/tools
 ADD main.py /app
-CMD /bin/bash
+CMD fastapi run main.py
