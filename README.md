@@ -1,5 +1,5 @@
 # api-tools-dynamate
-Dynamte Tools API
+DynaMate Tools API
 
 ## Examples
 
