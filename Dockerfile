@@ -1,0 +1,20 @@
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y \
+    vim \
+    git \
+    net-tools
+WORKDIR /app
+EXPOSE 8000
+RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o \
+    /tmp/miniconda.sh && \
+    /bin/bash /tmp/miniconda.sh -b -p /opt/miniconda && \
+    rm /tmp/miniconda.sh
+ENV PATH="/opt/miniconda/bin:${PATH}"
+RUN conda update -n base -c defaults conda
+RUN conda install -c conda-forge -c omnia \
+    foyer \
+    mbuild=0.18.0 \
+    sqlite==3.45.3 \
+    ipython
+ADD tools /app/tools
+CMD /bin/bash
