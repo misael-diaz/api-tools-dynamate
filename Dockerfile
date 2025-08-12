@@ -20,4 +20,5 @@ RUN conda install -c conda-forge -c omnia \
     python=3.12.0 \
     mbuild=0.18.0
 ADD tools /app/tools
+ADD main.py /app
 CMD /bin/bash
