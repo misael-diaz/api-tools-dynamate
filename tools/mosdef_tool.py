@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 def MosdDEF(d):
-"""
-This tool uses the MosDEF workflow to generate a LAMMPS data file from a molecule's
-SMILE string. By default it uses the OPLS-AA force field for interaction parameters.
-The box-size must be supplied in nanometers.
-"""
+    """
+    This tool uses the MosDEF workflow to generate a LAMMPS data file from a molecule's
+    SMILE string. By default it uses the OPLS-AA force field for interaction parameters.
+    The box-size must be supplied in nanometers.
+    """
 
     import mbuild
     import foyer
