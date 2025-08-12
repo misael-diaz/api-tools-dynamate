@@ -16,8 +16,6 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
 RUN conda update -n base -c defaults conda
 RUN conda install -c conda-forge -c omnia \
     foyer \
-    mbuild=0.18.0 \
-    sqlite==3.45.3 \
-    ipython
+    mbuild=0.18.0
 ADD tools /app/tools
 CMD /bin/bash
