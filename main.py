@@ -18,4 +18,10 @@ def root():
 
 @app.post("/api/tool/mosdef")
 def mosdef(data: DataMosdef):
-    return { "data": tool_mosdef(data) }
+    d = {
+            "name": data.name,
+            "smiles": data.smiles,
+            "length": data.length,
+            "count": data.count
+    }
+    return { "data": tool_mosdef(d) }
