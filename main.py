@@ -7,4 +7,4 @@ app = FastAPI()
 
 @app.post("/api/tool/mosdef")
 def mosdef(data):
-    return tool_mosdef(data)
+    return { "data": tool_mosdef(data) }
