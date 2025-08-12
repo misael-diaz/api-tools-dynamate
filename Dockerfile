@@ -11,6 +11,8 @@ RUN curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -
     /bin/bash /tmp/miniconda.sh -b -p /opt/miniconda && \
     rm /tmp/miniconda.sh
 ENV PATH="/opt/miniconda/bin:${PATH}"
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 RUN conda update -n base -c defaults conda
 RUN conda install -c conda-forge -c omnia \
     foyer \
