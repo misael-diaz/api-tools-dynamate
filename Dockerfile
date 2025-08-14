@@ -16,7 +16,7 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
 RUN conda update -n base -c defaults conda
 RUN conda install -c conda-forge -c omnia \
     fastapi \
-    foyer \
+    foyer=1.0.0 \
     python=3.12.0 \
     mbuild=0.18.0
 ADD tools /app/tools
