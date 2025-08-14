@@ -20,9 +20,10 @@ def packmol_template_tool(data):
     import os
     names = data["names"]
     count = data["count"]
-    box = data["box"]
+    length = data["length"]
 
     nmol = count
+    box = length
 
     # Writing packmol input
     with open("packmol.inp", "w") as f:
