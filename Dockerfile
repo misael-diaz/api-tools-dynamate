@@ -15,6 +15,9 @@ RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkg
 RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
 RUN conda update -n base -c defaults conda
 RUN conda install -c conda-forge -c omnia \
+    packmol=21.0.4 \
+    moltemplate=2.22.3 \
+    lammps-interface=0.2.2 \
     fastapi=0.116.1 \
     foyer=1.0.0 \
     python=3.12.0 \
