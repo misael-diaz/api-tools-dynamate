@@ -57,7 +57,7 @@ end structure
 
         # Loop to import each molecule's template file
         for name in names:
-            print(f'import "{name}.lt"', file=f)
+            print(f'import "data/{name}.lt"', file=f)
 
         print("\n# Define the number of molecules", file=f)
 
