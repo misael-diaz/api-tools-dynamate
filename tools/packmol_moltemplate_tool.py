@@ -40,7 +40,7 @@ output system.pdb
 
         for i in range(len(names)):
             print(f"""
-structure {names[i]}.pdb
+structure data/{names[i]}.pdb
   number {nmol[i]}
   inside box 0. 0. 0. {box} {box} {box}
 end structure
