@@ -1,5 +1,6 @@
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
+    bc \
     vim \
     git \
     curl \
@@ -21,7 +22,8 @@ RUN conda install -c conda-forge -c omnia \
     fastapi=0.116.1 \
     foyer=1.0.0 \
     python=3.12.0 \
-    mbuild=0.18.0
+    mbuild=0.18.0 \
+    ipython
 ADD tools /app/tools
 ADD data /app/data
 ADD main.py /app
