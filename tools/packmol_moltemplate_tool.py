@@ -18,6 +18,7 @@ def packmol_template_tool(data):
     """
 
     import os
+    import subprocess
     names = data["names"]
     count = data["count"]
     length = data["length"]
@@ -47,7 +48,11 @@ end structure
 """, file=f)
 
     # Run packmol
-    os.system("packmol < packmol.inp")
+    sp = subprocess.run(["packmol < packmol.inp"], capture_output=True)
+    rc = sp.returncode
+    if 0 != rc:
+        return { "data": None, "error": sb.stderr }
+
 
     # Writing moltemplate system.lt file
     with open("system.lt", "w") as f:
@@ -76,11 +81,16 @@ write_once("Data Boundary") {{
 """, file=f)
 
     # Run moltemplate
-    os.system(f"moltemplate.sh -pdb system.pdb system.lt")
+    sp = subprocess.run(
+        ["moltemplate.sh", "-pdb", "system.pdb", "system.lt"], capture_output=True
+    )
+    rc = sp.returncode
+    if 0 != rc:
+        return { "data": None, "error": sb.stderr }
 
     ## remove temporary files
     os.system("rm -rf output_ttree")
 
     with open("system.lt", "r") as f:
         data = f.read()
-    return data
+    return { "data": data, error: None }

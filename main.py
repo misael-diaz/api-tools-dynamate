@@ -24,6 +24,7 @@ def root():
     return { "data": "hello world from FastAPI!" }
 
 @app.post("/api/tool/mosdef")
+# TODO: update mosdef_tool so that it retruns a dict with fields data and error
 def mosdef(data: DataMosdef):
     d = {
             "name": data.name,
@@ -40,4 +41,4 @@ def mosdef(data: DataPackmolMoltemplate):
             "count": data.count,
             "length": data.length
     }
-    return { "data": tool_packmol_template(d) }
+    return tool_packmol_template(d)
