@@ -47,11 +47,12 @@ structure data/{names[i]}.pdb
 end structure
 """, file=f)
 
-    # Run packmol
-    sp = subprocess.run(["packmol < packmol.inp"], capture_output=True)
-    rc = sp.returncode
-    if 0 != rc:
-        return { "data": None, "error": sb.stderr }
+    # Run packmol, we return stdout because that's what packmol uses for error logging
+    with open("packmol.inp", "r") as f:
+        sp = subprocess.run(["packmol"], stdin=f, capture_output=True)
+        rc = sp.returncode
+        if 0 != rc:
+            return { "data": None, "error": sp.stdout }
 
 
     # Writing moltemplate system.lt file
@@ -82,15 +83,17 @@ write_once("Data Boundary") {{
 
     # Run moltemplate
     sp = subprocess.run(
-        ["moltemplate.sh", "-pdb", "system.pdb", "system.lt"], capture_output=True
+        ["moltemplate.sh", "-pdb", "system.pdb", "system.lt"],
+        capture_output=True,
+        text=True
     )
     rc = sp.returncode
     if 0 != rc:
-        return { "data": None, "error": sb.stderr }
+        return { "data": None, "error": sp.stderr }
 
     ## remove temporary files
     os.system("rm -rf output_ttree")
 
     with open("system.lt", "r") as f:
         data = f.read()
-    return { "data": data, error: None }
+    return { "data": data, "error": None }
