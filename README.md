@@ -1,6 +1,12 @@
 # api-tools-dynamate
 DynaMate Tools API
 
+This is a work in progress and so this documentation is missing a lot of context.
+
+The machine running this API is tasked with executing the molecular dynamics tools.
+Some of the agent tools that we made public in the original
+[DynaMate](https://github.com/omendibleba/dynaMate) are going to be added.
+
 ## Examples
 
 In this section we present examples of the molecular dynamics tools that have been added
